@@ -1,7 +1,11 @@
 import React from 'react';
-import './AddFolder.css';
+import MainWrapper from './MainWrapper';
+import ValidationError from './ValidationError';
+import AddFolderError from './AddFolderError';
 import NotefulContext from '../NotefulContext';
+import { validateName } from '../validate';
 import config from '../config';
+import './AddFolder.css';
 
 class AddFolder extends React.Component {
   state = {
@@ -12,10 +16,6 @@ class AddFolder extends React.Component {
   }
 
   static contextType = NotefulContext;
-
-  componentDidMount() {
-    this.context.notFoundState(false);
-  }
 
   postFolderRequest(event, postFolderCb) {
     event.preventDefault();
@@ -53,26 +53,37 @@ class AddFolder extends React.Component {
   }
 
   render() {
-    console.log(this.state.name.value);
+    const nameError = validateName(this.state.name.value);
     return (
-      <form 
-      className="form__container"
-      onSubmit={(e) => this.postFolderRequest(e, this.context.addFolder)}>
-        <h1>Add folder</h1>
-        <div className="form__group">
-          <label htmlFor="name">Folder Name:</label>
-          <input 
-            name="name"
-            id="name"
-            value={this.state.name.value}
-            onChange={(e) => this.handleChange(e)} />
-        </div>
-        <div className="form__group">
-          <button type="submit">Add folder</button>
-        </div>
-      </form>
+      <AddFolderError>
+        <MainWrapper>
+          <form 
+            className="form__container"
+            onSubmit={(e) => this.postFolderRequest(e, this.context.addFolder)}>
+            <h1>Add folder</h1>
+            <div className="form__group">
+              <label htmlFor="name">Folder Name:</label>
+              <input 
+                name="name"
+                id="name"
+                value={this.state.name.value}
+                onChange={(e) => this.handleChange(e)} />
+              {this.state.name.touched && (
+                <ValidationError message={nameError}/>
+              )}
+            </div>
+            <div className="form__group">
+              <button 
+                type="submit"
+                disabled={nameError}>
+                  Add folder
+              </button>
+            </div>
+          </form>
+        </MainWrapper>
+      </AddFolderError>
     );
   }
 }
 
-export default AddFolder; 
+export default AddFolder;

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './MainSection.css';
+import MainError from './MainError';
 import NotefulContext from '../NotefulContext';
 import config from '../config';
+import MainWrapper from './MainWrapper';
+import SidebarWrapper from './SidebarWrapper';
+import SidebarSection from './SidebarSection';
 
 class MainSection extends React.Component { 
   static contextType = NotefulContext;
-
-  componentDidMount() {
-    this.context.notFoundState(false);
-  }
 
   deleteNoteRequest(noteId, deleteNoteCb) {
     fetch(config.API_URL + `notes/${noteId}`, {
@@ -24,7 +24,7 @@ class MainSection extends React.Component {
           throw error;
         })
       }
-      return response.json();
+      return response;
     })
     .then(responseJson => {
       deleteNoteCb(noteId)
@@ -35,6 +35,14 @@ class MainSection extends React.Component {
     .catch(err => console.log(err));
   }
 
+  localizeNoteDate(date) {
+    return new Date(date).toLocaleDateString('en-US', { 
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  }
+
   render() {
     const params = this.props.match.params;
     let data = params.noteId 
@@ -42,7 +50,8 @@ class MainSection extends React.Component {
       : this.context.store.notes;
 
     if (params.folderId) {
-      data = this.context.store.notes.filter(note => note.folderId === params.folderId);
+      // convert params.folderId string retrieved from url params to a number with the unary plus operator
+      data = this.context.store.notes.filter(note => note.folderId === +params.folderId);
     }
 
     const notes = data.map(note => {
@@ -65,7 +74,7 @@ class MainSection extends React.Component {
               }
             </h1>
             <div>
-              <span>{note.modified}</span>
+            <span>Date modified: {this.localizeNoteDate(note.modified)}</span>
               <button onClick={() => {
                   this.deleteNoteRequest(note.id, this.context.deleteNote)
                 }}>Delete Note</button>
@@ -79,18 +88,26 @@ class MainSection extends React.Component {
     });
 
     return (
-      <div className="main__container">
+      <MainError>
+      <SidebarWrapper>  
+      <SidebarSection 
+            {...this.props}
+            getCurrentNoteData={this.context.getCurrentNoteData}
+            allFolders={this.context.store.folders}
+          />
+      </SidebarWrapper>
+      <MainWrapper>
         {params.noteId ? notes[0] : listWrapper(notes)}
         {!params.noteId &&
-          <button>Add note</button>
-        
+          <button onClick={() => this.props.history.push('/note/new')}>Add note</button>
         }
-      </div>
+      </MainWrapper>
+    </MainError>
     );
   }
 }
 
-// wrap notes in a list
+// wrap notes in an unordered list
 function listWrapper(notes) {
   return (
     <ul>
