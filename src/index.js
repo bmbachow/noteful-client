@@ -1,19 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {
-  faPlus, faChevronLeft, faTrashAlt, faCheckDouble
-} from '@fortawesome/free-solid-svg-icons'
-import { BrowserRouter } from 'react-router-dom'
-import 'typeface-roboto'
-import './index.css'
-import App from './App/App'
-
-library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble)
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import './index.css';
+import App from './App';
+import STORE from './store';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <App store={STORE} />
   </BrowserRouter>,
   document.getElementById('root')
-)
+);
