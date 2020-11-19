@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class MainError extends React.Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class MainError extends React.Component {
   }
 }
 
-
+MainError.propTypes = {
+  hasError: PropTypes.string
+}
 
 export default MainError; 

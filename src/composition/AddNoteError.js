@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddNoteError extends React.Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class AddNoteError extends React.Component {
   }
 }
 
-
+AddNoteError.propTypes = {
+  value: PropTypes.string
+};
 
 export default AddNoteError; 

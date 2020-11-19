@@ -7,6 +7,7 @@ import NotFoundPage from './composition/NotFoundPage';
 import NotefulContext from './NotefulContext';
 import config from './config';
 import './App.css';
+
 class App extends React.Component {
 	constructor() {
 		super();
@@ -124,5 +125,7 @@ class App extends React.Component {
 			</div>
 		);
 	}
+
 }
+
 export default App;

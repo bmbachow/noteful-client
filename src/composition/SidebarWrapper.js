@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function SidebarWrapper(props) {
   return (
@@ -9,5 +10,9 @@ function SidebarWrapper(props) {
     </nav>
   );
 }
+
+SidebarWrapper.propTypes = {
+  value: PropTypes.string
+};
 
 export default SidebarWrapper; 
