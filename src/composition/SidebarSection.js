@@ -92,4 +92,8 @@ function listWrapper(folders, history ) {
   );
 }
 
+SidebarSection.propTypes = {
+  match : PropTypes.number
+}
+
 export default SidebarSection;
