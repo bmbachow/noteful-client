@@ -93,7 +93,7 @@ function listWrapper(folders, history ) {
 }
 
 SidebarSection.propTypes = {
-  match : PropTypes.object
+  match : PropTypes.number
 }
 
 export default SidebarSection;

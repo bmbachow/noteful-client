@@ -29,7 +29,7 @@ class MainError extends React.Component {
 }
 
 MainError.propTypes = {
-  value: PropTypes.string
+  children: PropTypes.string
 }
 
 export default MainError; 
