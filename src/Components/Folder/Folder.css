@@ -1,0 +1,31 @@
+.active {
+    background-color: lightblue;
+}
+
+.Section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 13px;
+}
+
+.Folder {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 10px;
+    border: 3px solid;
+    border-color: #4d4d4d;
+    margin: 5px;
+    max-width: 350px;
+    min-width: 350px;
+}
+
+.navLink {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.folderDel {
+    margin-left: 225px;
+}

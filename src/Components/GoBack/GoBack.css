@@ -1,0 +1,13 @@
+.goBack {
+    border: 2px#4d4d4d solid;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 5px;
+    width: 200px;
+    text-align: center;
+}
+
+.backButton {
+    width: 75px;
+    height: 25px;
+}

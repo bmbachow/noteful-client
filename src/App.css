@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+
+header {
+  font-size: 20px;
+  padding-left: 65px;
+
+}
+
+.link {
+  color: #4d4d4d;
+  text-decoration: none;
+}
+
+.addNote {
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  margin-left: 10px;
+  padding: 5px;
+  border: 3px #4d4d4d solid;
+}
+
+/* Custom Grid Start */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 10% 80% 10%;
+  gap: 1px 1px;
+  grid-template-areas: "Header Header Header Header" "Nav Main Main Main" "Footer Footer Footer Footer";
+}
+
+header { grid-area: Header; }
+
+.Footer { grid-area: Footer; }
+
+nav { grid-area: Nav; }
+
+main { grid-area: Main; }
+/* Custom Grid End */

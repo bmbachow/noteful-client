@@ -1,0 +1,25 @@
+ul {
+   list-style: none;
+}
+
+.Note {
+   max-width: 90%;
+   border: 3px solid;
+   border-color: #4d4d4d;
+   margin: 10px;
+   padding: 10px;
+
+}
+
+.delbutton {
+   cursor: pointer;
+   margin-top: 10px;
+   width: 75px;
+   height: 30px;
+   border: 1px #4d4d4d solid;
+   text-align: center;
+}
+
+.delbutton:hover {
+   color: red;
+}
