@@ -1,0 +1,77 @@
+.AddNote {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.AddNote-button {
+  background-color: #cacaca;
+  border-radius: 30px;
+  border: 0;
+  color: black;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  height: 60px;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  width: 60px;
+  margin: 20px 20px 25px auto;
+}
+
+.AddNote-button:hover {
+  background-color: #FFB72F;
+  cursor: pointer;
+}
+
+h3 {
+  color: white;
+  margin: 15px;
+}
+
+.note-name-hint {
+  font-size: 16px;
+  color: white;
+  margin: 10px 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 10px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  margin: 15px 10px;
+}
+
+/* noteName is the input */
+#noteName {
+  width: 50%;
+  height: 35px;
+  border: white;
+  border-radius: 4px;
+  margin: 10px 15px;
+}
+
+textarea {
+  width: 50%;
+  height: 35px;
+  border: white;
+  border-radius: 4px;
+  margin: 10px 15px;
+}
+
+select {
+  width: 50%;
+  height: 35px;
+  border: white;
+  border-radius: 4px;
+  margin: 10px 15px;
+}
